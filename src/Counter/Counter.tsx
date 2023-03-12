@@ -8,7 +8,7 @@ type CounterPropsType = {
     resetNumber: () => void
     maxValue: number
     startValue: number
-    currentValue:number
+    currentValue: number
 }
 export const Counter = (props: CounterPropsType) => {
 
@@ -25,20 +25,22 @@ export const Counter = (props: CounterPropsType) => {
 
     }
 
+    let disableConditionIncr = props.currentValue === props.maxValue
+
+    let disableConditionRes = props.currentValue === props.startValue
+
     return (
         <div className={s.allCounter}>
             <div className={props.currentValue >= props.maxValue ? s.numberError : s.number}>
                 <h1>{props.currentValue}</h1>
             </div>
             <div className={s.button}>
-                <SuperButton callback={plusNumberHandler}
-                             // maxValue={props.maxValue}
-                             // startValue={props.startValue}
+                <SuperButton disableCondition={disableConditionIncr}
+                             callback={plusNumberHandler}
                              titleButton={'incr'}
                 />
-                <SuperButton callback={resetNumberHandler}
-                             // maxValue={props.maxValue}
-                             // startValue={props.startValue}
+                <SuperButton disableCondition={disableConditionRes}
+                             callback={resetNumberHandler}
                              titleButton={'reset'}
                 />
             </div>

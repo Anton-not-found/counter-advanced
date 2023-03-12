@@ -19,15 +19,14 @@ function App() {
     const currrentValue = (newStartValue: number) => {
         setCurrentValue(Number(newStartValue))
     }
-    const startValueSet = (value: string) => {
+    const startValueSet = (value: number) => {
         setStartValue(Number(value))
-
     }
-    const maxValueSet = (value: string) => {
+    const maxValueSet = (value: number) => {
         setMaxValue(Number(value))
     }
 
-    const setValueCustomizer = (newStartValue: string, newMaxValue: string) => {
+    const setValueCustomizer = (newStartValue: number, newMaxValue: number) => {
         setStartValue(Number(newStartValue))
         setMaxValue(Number(newMaxValue))
         currrentValue(Number(newStartValue))

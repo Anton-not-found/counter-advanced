@@ -4,37 +4,40 @@ import {SuperButton} from "../SuperButton/SuperButton";
 
 type SuperInputPropsType = {
     titleValue: string
-    callback: (value: string) => void
+    callback: (value: number) => void
 }
 
 export const SuperInput = (props: SuperInputPropsType) => {
 
-    let [value, setValue] = useState('0')
-    const [error, setError] = useState('0')
+    let [value, setValue] = useState(0)
+
 
     const onChangeInputHandler = (e: ChangeEvent<HTMLInputElement>) => {
-         setValue(e.currentTarget.value)
-         props.callback(e.currentTarget.value)
+        let newValue = Number(e.currentTarget.value)
+        setValue(newValue)
+        props.callback(newValue)
         // res(e.currentTarget.value);
-
-    }
-
-    // const res = (value:string) => {
-    //     // console.log(value)
-    // }
-    // console.log(value)
-    // const onEnterInputHandler = (e: React.KeyboardEvent<HTMLInputElement>) => {
-    //     if (e.key === 'Enter') {
-    //         setValue(e.currentTarget.value)
-    //         props.callback(value)
+    //     if (newValue < 0) {
+    // setError('ERROR')
     //     }
+    }
+    // const onBlurHandler = () => {
+    //     console.log('onBlur')
+    // }
+    // const onFocusHandler = () => {
+    //     props.callback(value)
     // }
 
     return (
         <div>
             <div className={s.inputMax}>
                 <h5>{props.titleValue}
-                    <input value={value} type={"number"} onChange={onChangeInputHandler} />
+                    <input value={value}
+                           type={"number"}
+                           onChange={onChangeInputHandler}
+                        // onBlur={onBlurHandler}
+                        //    onFocus={onFocusHandler}
+                    />
                 </h5>
             </div>
         </div>

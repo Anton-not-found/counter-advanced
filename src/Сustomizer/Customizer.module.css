@@ -1,8 +1,56 @@
-.inputMax input{
-    width: 100px ;
+/*.inputMax input{*/
+/*    width: 50px ;*/
+/*    height: 20px;*/
+/*}*/
+/*.inputStart input{*/
+/*    width: 50px ;*/
+/*    height: 20px;*/
+/*}*/
+
+
+.allCustomizer {
+    margin-top: 100px;
+    margin-left: 20px;
+    border: 2px solid #032d62;
+    width: 200px;
+    height: 200px;
+    display: grid;
+    grid-template-rows: 5fr 5fr;
+    justify-content: center;
+    border-radius: 10px;
+    background-color: #8f929a;
+
+}
+
+.input {
+    /*border: 2px solid #f80606;*/
+
+}
+
+.input input {
+    border: 2px solid #faef24;
+    width: 70px;
     height: 20px;
 }
-.inputStart input{
-    width: 100px ;
+
+.inputError input {
+    background-color: rgba(253, 26, 26, 0.78);
+    border: 2px solid rgb(3, 45, 98);
+    width: 70px;
     height: 20px;
+}
+
+.button button {
+    color: white;
+    border-radius: 3px;
+    width: 50px;
+    height: 20px;
+    margin-left: 50px;
+    margin-top: 20px;
+    background-color: #076d7c;
+    border-color: #024e59
+}
+.button button:disabled{
+    background-color: rgba(7, 109, 124, 0.33);
+    color: rgba(255, 255, 255, 0.44);
 }
