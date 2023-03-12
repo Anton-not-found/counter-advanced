@@ -5,23 +5,32 @@ import {Customizer} from "./Сustomizer/Сustomizer";
 
 
 function App() {
-    let startValue = 0;
-    const [maxValue,setMaxValue] = useState(5)
-    const [numberDefault, setNumberDefault] = useState(startValue);
+    const [maxValue, setMaxValue] = useState(5)
+    const [startValue, setStartValue] = useState(0);
+    const [currentValue, setCurrentValue] = useState(0);
+
     const plusNumber = () => {
-        setNumberDefault(numberDefault => numberDefault + 1);
+        setCurrentValue(setCurrentValue => setCurrentValue + 1);
     }
     const resetNumber = () => {
-        setNumberDefault(startValue);
+        setCurrentValue(startValue);
     }
 
+    const currrentValue = (newStartValue: number) => {
+        setCurrentValue(Number(newStartValue))
+    }
     const startValueSet = (value: string) => {
-        setNumberDefault(Number(value))
-        startValue = Number(value)
+        setStartValue(Number(value))
 
     }
     const maxValueSet = (value: string) => {
-        setMaxValue( Number(value))
+        setMaxValue(Number(value))
+    }
+
+    const setValueCustomizer = (newStartValue: string, newMaxValue: string) => {
+        setStartValue(Number(newStartValue))
+        setMaxValue(Number(newMaxValue))
+        currrentValue(Number(newStartValue))
     }
 
 
@@ -30,12 +39,14 @@ function App() {
             <div className={'app-wrapper'}>
                 <Customizer maxValueSet={maxValueSet}
                             startValueSet={startValueSet}
+                            setValueCustomizer={setValueCustomizer}
                 />
-                <Counter numberDefault={numberDefault}
-                         plusNumber={plusNumber}
+                <Counter plusNumber={plusNumber}
                          resetNumber={resetNumber}
                          maxValue={maxValue}
                          startValue={startValue}
+                         currentValue={currentValue}
+
                 />
             </div>
 

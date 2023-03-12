@@ -1,27 +1,21 @@
 import React from 'react';
 import s from "./SuperButton.module.css";
+
 type SuperButtonPropsType = {
-    numberDefault: number
-    plusNumber: () => void
-    resetNumber: () => void
-    maxValue: number
-    startValue:number
+    callback: () => void
+    titleButton: string
 }
-export const SuperButton = (props:SuperButtonPropsType) => {
-
-    const onClickPlusHandler = () => {
-        props.plusNumber()
-    }
-    const onClickResetHandler = () => {
-        props.resetNumber()
-    }
-
-
+export const SuperButton = (props: SuperButtonPropsType) => {
+     const onClickHandler = () => {
+          props.callback()
+     }
     return (
         <div>
             <div className={s.button}>
-            <button disabled={props.numberDefault >= props.maxValue} onClick={onClickPlusHandler}>inc</button>
-            <button disabled={props.numberDefault === props.startValue} onClick={onClickResetHandler}>reset</button>
+                <button onClick={onClickHandler}>{props.titleButton}</button>
+                {/*<button disabled={props.startValue >= props.maxValue} onClick={onClickPlusHandler}>{props.titleButton}</button>*/}
+                {/*<button disabled={props.startValue >= props.maxValue} onClick={onClickPlusHandler}>inc</button>*/}
+
             </div>
 
         </div>

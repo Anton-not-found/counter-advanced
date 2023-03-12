@@ -9,30 +9,33 @@ type SuperInputPropsType = {
 
 export const SuperInput = (props: SuperInputPropsType) => {
 
-    const [value, setValue] = useState('')
-    const [error, setError] = useState('')
+    let [value, setValue] = useState('0')
+    const [error, setError] = useState('0')
 
     const onChangeInputHandler = (e: ChangeEvent<HTMLInputElement>) => {
-        setValue(e.currentTarget.value)
+         setValue(e.currentTarget.value)
+         props.callback(e.currentTarget.value)
+        // res(e.currentTarget.value);
 
     }
 
-    const onEnterInputHandler = (e: React.KeyboardEvent<HTMLInputElement>) => {
-        if (e.key === 'Enter') {
-            setValue(e.currentTarget.value)
-            props.callback(value)
-        }
-    }
+    // const res = (value:string) => {
+    //     // console.log(value)
+    // }
+    // console.log(value)
+    // const onEnterInputHandler = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    //     if (e.key === 'Enter') {
+    //         setValue(e.currentTarget.value)
+    //         props.callback(value)
+    //     }
+    // }
 
     return (
         <div>
             <div className={s.inputMax}>
                 <h5>{props.titleValue}
-                    <input type={"number"} onChange={onChangeInputHandler} onKeyDown={onEnterInputHandler} />
+                    <input value={value} type={"number"} onChange={onChangeInputHandler} />
                 </h5>
-            </div>
-            <div className={s.button}>
-                {/*<SuperButton numberDefault={} plusNumber={} resetNumber={} maxValue={} startValue={}/>*/}
             </div>
         </div>
     );
